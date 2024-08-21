@@ -1,12 +1,22 @@
 import { create } from "zustand";
 
-type Store = {
-    todos: any
-    addTodo: () => void
-    removeTodo: () => any
+export type TodoItem = {
+    id: number,
+    task: string,
+    completed: boolean
 }
-const useToDoStore = create<Store>(set => ({
-    todos: [],
-    addTodo: (text) => set((state)) => ({todos: [...state.todos, {text, completed:false, id: Date.now()}]}), 
-    removeTodo: (text) => set((state)) => ({todos: [...state.todos, {text, completed:false, id: Date.now()}]}), 
-}))
+
+export interface ToDoItemState{
+    items: TodoItem[];
+    addItem(item: TodoItem): void;
+    removeItem(item: TodoItem): void;
+}
+
+const useToDoStore = create<ToDoItemState>((set)=> ({ 
+    items: [],
+    addItem(item: TodoItem)
+
+})
+    items: [],
+
+)
